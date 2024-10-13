@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: "Nunito";
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito";
+    overflow: hidden;
+}
+* {
+    box-sizing: inherit;
+    --usual: 12px;/*
+    --backc: #18151A;
+    --navc: #241F26;*/
+    --bc: #16161d;
+    --gc: #24242B;
+    --vgc: #88888E;
+    --gtc: #24242b20;
+    --gtca: #56565D20;
+    --wc: #ECECF1;
+    --ac: #94B1FF;
+    font-family: "Nunito";
+}
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--bc);
+    z-index: -205;
+}
+.grain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat:repeat;
+    background: url('sourse/noise.gif');
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: -172;
+}
+.nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gc);
+    gap:10px;
+    width: 100%;
+    padding: 4px;
+    user-select: none;
+}
+.avat-circle {
+    height: 100%;
+    border-radius: 50%;
+}
+.avat-square {
+    height: 100%;
+    border-radius: var(--usual);
+}
+.tokim {
+    height: 1.4rem;
+}
+.nam-holder {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.nam {
+    font-weight: 700;
+    color: var(--wc);
+}
+.tokval {
+    font-weight: 700;
+    color: var(--ac)
+}
+/* .vl {
+    width: 0px;
+    height: 100%;
+    border-width: 1px;
+    border-color: var(--ac);
+    border-style: solid;
+} */
+.nav2-but {
+    height: 100%;
+    width: 22%;
+    max-width: 104px;
+    border: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    font-family: 'Nunito';
+    font-size: 15px;
+    color: var(--wc);
+    text-decoration: none;
+}
+/* .nav2-img {
+display: inline;
+margin: 0 auto;
+height: 56%;
+width: auto;
+} */
+.panel {
+    background-color: var(--wc);
+    color: var(--bc);
+    border-radius: var(--usual);
+    display: flex;
+    align-items: center;
+    grid-column: span 2;
+    grid-row: span 2;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-family: "Nunito";
+    text-wrap: pretty;
+    transition: background-color 0.3s ease;
+}
+.chp {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: var(--ac);
+    border-width: 7px;
+    border-radius: var(--usual);
+    color: var(--ac);
+    background-color: transparent;
+    user-select: none;
+    cursor: pointer;
+    font-family: "Nunito";
+    font-weight: bolder;
+    transition: background-color 0.2s ease;
+}
+.chp:active {
+    background-color: var(--ac);
+}
+.kebfr {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: min(1vw, 1vh);
+    width: min(95vw, 60vh);
+}
+.keb {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: var(--usual);
+	background-color: var(--gtc);
+    color: var(--wc);
+    position: relative;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Nunito";
+    transition: background-color 0.3s ease;
+    word-wrap: break-word;
+    overflow: hidden;
+    user-select: none;
+}
+.keb:hover {
+    background-color: var(--gtca);
+}
+blurer {
+    backdrop-filter: blur(1px);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+}
+.paint {
+    z-index: -3;
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fadeIn ease-in .25s;
+    overflow: hidden;
+}
+.signa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--usual);
+    image-rendering: pixelated;
+    overflow: hidden;
+    position: relative;
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+}
+.basic-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    margin-top: 4vh;
+    height: 85%;
+    width: 90%;
+    max-width: 555px;
+    overflow-y: auto;
+}
+.invis {
+    position: absolute;
+    z-index: -99999;
+}
+.inv {
+    margin-top: 4vh;
+    width: 75%;
+    max-width: 530px;
+    color: var(--bc);
+    background-color: var(--ac);
+    font-size: 18px;
+}
+.inv:active {
+    background-color: transparent;
+    color: var(--ac);
+}
+.frn {
+    font-size: 16px;
+    height: 7vh;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.tsk {
+    font-size: 16px;
+    height: 8vh;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: grid;
+    grid-template-columns: min-content auto 20% 7%;
+    word-break: break-all;
+    text-decoration: none;
+}
+.lvl {
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: var(--ac);
+    opacity: 20%;
+    background-color: transparent;
+    border: 0px;
+}
+.timest {
+    color: var(--vgc);
+    line-height: 1;
+}
+.comb {
+    height: 4vh;
+    word-break: keep-all;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    line-height: 1;
+}
+.chunk {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.4rem;
+    color: var(--vgc);
+    border-bottom: solid 1px var(--vgc);
+    gap: 1vh;
+}
+.pas {
+    margin-right: 1%;
+    width: 25%;
+    border: none;
+    outline: none;
+    border-radius: var(--usual);
+    background-color: var(--gc);
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--gtc);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--gtca);
+  border-radius: 100px;
+}
