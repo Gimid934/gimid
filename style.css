@@ -191,6 +191,8 @@ blurer {
     pointer-events: none;
 }
 .paint {
+    transform: translateZ(0);
+    will-change: transform, opacity;
     z-index: -3;
     position: absolute;
     border-radius: 50%;
