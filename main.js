@@ -10,9 +10,6 @@ function randint(max) {
 }
 nocl = []
 function createCircle(event) {
-    test = document.createElement('keb');
-  test.innerHTML = "TEST"
-  event["srcElement"].appendChild(test)
     if (! nocl.includes(event["srcElement"]) && Array.from(buttons).includes(event["srcElement"])) {
       pan.innerHTML += event["srcElement"].innerHTML.match(/\w+/) + " "
   }
