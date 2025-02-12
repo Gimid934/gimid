@@ -3,6 +3,8 @@ pan = document.querySelector('.panel');
 ch = document.querySelector('.chp');
 nam = document.querySelector('.nam');
 toky = document.querySelector('.toky');
+navbs = document.querySelectorAll('.nav2-but');
+flips = document.querySelectorAll('.flips');
 createButtons();
 
 function randint(max) {
@@ -23,7 +25,7 @@ function createCircle(event) {
         event["srcElement"].innerHTML = "<div class='paint' style='"+styl+"'></div>" + event["srcElement"].innerHTML
         nocl.push(event["srcElement"])
     }
-
+    event["srcElement"].classList.add('keb-active')
 }
 
 function getRandomWord() {
@@ -70,27 +72,139 @@ async function createButtons() {
       button.appendChild(b)
     }
     buttons = document.querySelectorAll('.keb')
-    resizeFont()
 }
 
 function checkp() {
+  ch.classList.add('backger');
+  setTimeout(() => {
+    ch.classList.remove('backger')
+  }, 1000)
   pan.innerHTML = ""
   paints = document.querySelectorAll('.paint')
   paints.forEach(paint => {
     paint.remove()
   });
+  kebs = document.querySelectorAll('.keb');
+  kebs.forEach(kebl => {
+    kebl.classList.remove('keb-active')
+  });
   nocl = []
 }
 ch.addEventListener('click', checkp);
 
-function resizeFont() {
-  const buttonSize = buttons[0].getBoundingClientRect()["width"];
-  lolsize = buttonSize * 0.2
-  buttons.forEach(button => {
-    button.style.fontSize = `${lolsize}px`;
-  });
-  ch.style.fontSize = `${lolsize}px`;
-  pan.style.fontSize = `${lolsize}px`;
-  nam.style.fontSize = `${lolsize}px`;
-  toky.style.fontSize = `${lolsize}px`;
+navbs.forEach(button => {
+  button.addEventListener('click', () => {
+    present_flip = document.querySelector('.flips.acti')
+    present_flip.classList.remove('acti')
+    present_flip.classList.add('invis')
+    
+    new_flip = document.querySelector('.flips.' + button.classList[1])
+    new_flip.classList.remove('invis')
+    new_flip.classList.add('acti')
+
+    button.classList.add('rotator');
+    setTimeout(() => {
+      button.classList.remove('rotator')
+    }, 500)
+  })
+})
+// temporary
+frs = [['adel_sleep.gif', 'veryveryverylooooongtext'], ['mur_sleep.gif', 'test2'], ['broken.svg', 'blank test']]
+// frs=[]
+wraper_f = document.querySelector('.basic-wrap.bf')
+template_f = document.querySelector('.nam-holder.frn.invis')
+for (let i = 0; i<frs.length; i++) {
+    part = template_f.cloneNode(deep = true)
+    part.classList.remove('invis')
+    // temporary
+    if (ImageExist('sourse/'+frs[i][0])) {
+      part.children[0].src = 'sourse/'+frs[i][0]
+    } else {
+      part.children[0].src = 'sourse/blank.png'
+    }
+    // part.children[0].src = ???
+    part.children[1].innerText = frs[i][1]
+    wraper_f.appendChild(part)
+}
+template_f.remove()
+
+tasks = [["https://youtube.com", 'adel_sleep.gif', 'blank1', "52"], ['https://google.com', 'mur_sleep.gif', 'blank2', '49'], ['https://telegram.org', 'blank.png', 'realblank3', '163']]
+wraper_t = document.querySelector('.basic-wrap.bt')
+template_t = document.querySelector('.nam-holder.tsk.invis')
+for (let i = 0; i<tasks.length; i++) {
+  part = template_t.cloneNode(deep = true)
+  part.classList.remove('invis')
+  part.href = tasks[i][0]
+  if (ImageExist('sourse/'+tasks[i][1])) {
+    part.children[0].src = 'sourse/'+tasks[i][1]
+  } else {
+    part.children[0].src = 'sourse/blank.png'
+  }
+  part.children[1].innerText = tasks[i][2]
+  part.children[2].innerText = "+"+tasks[i][3]+" EXP"
+  wraper_t.appendChild(part)
+}
+template_t.remove()
+
+leveler = document.querySelector('.lvl')
+pas = document.querySelector('.pas')
+cou = 0
+l_t = leveler.innerText
+function showup(){
+    console.log(cou)
+    if (cou < 4) {
+        cou += 1
+        leveler.innerText = "lvl !"
+    } else if (cou == 4) {
+        cou += 1
+        pas.classList.remove('invis')
+        pas.disabled = false
+        leveler.innerText = "lvl ->"
+    } else if (cou > 4 & cou < 9) {
+        cou += 1
+        pas.classList.add('invis')
+        pas.disabled = true
+        leveler.innerText = l_t
+    } else if (cou == 9) {
+        leveler.innerText = "lvl ?"
+    }
+    
+}
+leveler.addEventListener('click', showup);
+shelves = [["2024-08-24", 'word1 word1 word1word1 word1word1 word1word1 word1word1 word1word1 word1', "52"], ['2024-08-25', 'word2', '149'], ['2024-04-25', 'word3', '263'], ["2024-08-24", 'word4', "102"],]
+wraper_v = document.querySelector('.basic-wrap.bv')
+shelves_dates = []
+shelves.sort((a,b) => new Date(b[0]).getTime() - new Date(a[0]).getTime())
+
+chunk = document.querySelector('.chunk.invis')
+comb = document.querySelector('.comb.invis')
+
+for (let i = 0; i<shelves.length; i++) {
+    if (!shelves_dates.includes(shelves[i][0])) {
+        shelves_dates.push(shelves[i][0])
+        ch_part = chunk.cloneNode(deep = true)
+        ch_part.classList.remove('invis')
+        d = shelves[i][0]
+        d = d.split("-")
+        ch_part.children[0].innerText = `${d[2]}.${d[1]}.${d[0]}`
+        wraper_v.appendChild(ch_part)
+    }
+    part = comb.cloneNode(deep = true)
+    part.classList.remove('invis')
+    part.children[0].innerText = shelves[i][1]
+    part.children[1].innerText = shelves[i][2]+" EXP"
+    ch_part.appendChild(part)
+}
+chunk.remove()
+comb.remove()
+
+function ImageExist(url) 
+{
+  try {
+   var img = new Image();
+   img.src = url;
+   return img.height != 0;
+  } catch {
+    return false
+  }
 }
