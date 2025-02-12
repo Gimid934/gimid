@@ -7,28 +7,76 @@
 	<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 	<div class="background"><div class="grain"></div></div>
-    <div class="nav" style="height: 7vh;">
+    <div class="flips fl-1 acti">
+        <div class="nav">
         <div class="nam-holder">
             <img class="avat-circle" src="sourse/mur.png">
             <div class="nam">Ananas Petrovich</div>
         </div>
-        <div class="nam-holder">
-            <div class="tokval">152.94 M</div>
-            <img class="avat-circle tokim" src="sourse/mur_sleep.gif">
+        <div class="tokval">152.94M EXP</div>
         </div>
-    </div>
-    <div class="kebfr">
+        <div class="kebfr">
         <div class="panel"></div>
         <div class="signa"><img src="sourse/mur_sleep.gif" style="width: 100%;"></div>
         <button class="chp"><blurer></blurer>Save</button>
+        </div>
+        <div class="nav">
+        </div> 
     </div>
-    <div class="nav">
-        <a class="nav2-but" href="./frens.html"><img src='sourse/f.svg'>Frens</a>
-        <a class="nav2-but" href="./main.html"><img src='sourse/h.svg'>Main</a>
-        <a class="nav2-but" href="./tasks.html"><img src='sourse/t.svg'>Tasks</a>
-        <a class="nav2-but" href="./vault.html"><img src='sourse/v.svg'>Vault</a>
+    <div class="flips fl-2 invis">
+        <div class="nav" style="height: 7vh;">
+            <div style="height: 100%; display: flex; align-items: center;">
+                <img style="height: 100%;" src="sourse/fr.svg">
+            </div>
+        </div>
+        <button class="inv chp">Invite</button>
+        <div class="basic-wrap bf" style="width: 80%;">
+            <div class="nam-holder frn invis">
+                <img class="avat-circle" src="sourse/blank.png">
+                <div class="nam"></div>
+            </div>
+        </div>
+    </div>
+    <div class="flips fl-3 invis">
+        <div class="nav" style="height: 7vh;">
+            <div style="height: 100%; display: flex; align-items: center;">
+                <img style="height: 100%;" src="sourse/ta.svg">
+            </div>
+        </div>
+        <div class="basic-wrap bt">
+            <a class="nam-holder tsk invis">
+                <img class="avat-square" src="sourse/blank.png">
+                <div class="nam"></div>
+                <div class="tokval"></div>
+                <img src="sourse/arrow.svg">
+            </a>
+        </div>
+    </div>
+    <div class="flips fl-4 invis">
+        <div class="nav" style="height: 7vh;">
+            <div style="height: 100%; display: flex; align-items: center;">
+                <img style="height: 100%;" src="sourse/Vv.svg">
+                <button class="lvl">lvl 1</button>
+            </div>
+            <input type="text" class="pas invis" disabled autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+        </div>
+        <div class="basic-wrap bv">
+            <div class="nam-holder frn nam comb invis">
+                <div></div>
+                <div class="tokval"></div>
+            </div>
+            <div class="chunk invis">
+                <div class="timest"></div>
+            </div>
+        </div>
+    </div>
+    <div class="nav bottom-nav">
+        <button class="nav2-but fl-1" draggable="false"><img src='sourse/h.svg'></button>
+        <button class="nav2-but fl-2" draggable="false"><img src='sourse/f.svg'></button>
+        <button class="nav2-but fl-3" draggable="false"><img src='sourse/t.svg'></button>
+        <button class="nav2-but fl-4" draggable="false"><img src='sourse/v.svg'></button>
     </div>
 	<script src="main.js"></script>
 </body>
