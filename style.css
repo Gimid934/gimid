@@ -7,6 +7,7 @@ html {
     height: 100%;
     box-sizing: border-box;
     font-family: "Nunito";
+    font-size: round(nearest, calc((min(95vw, 60vh) - (3 * min(1vw, 1vh))) / 19.2), 1px);
 }
 body {
     display: flex;
@@ -20,6 +21,8 @@ body {
     padding: 0;
     font-family: "Nunito";
     overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
 }
 * {
     box-sizing: inherit;
@@ -32,6 +35,7 @@ body {
     --gtc: #24242b20;
     --gtca: #56565D20;
     --wc: #ECECF1;
+    --wca: rgba(236, 236, 241, 0.15);
     --ac: #94B1FF;
     font-family: "Nunito";
 }
@@ -52,23 +56,47 @@ body {
     pointer-events: none;
     z-index: -172;
 }
+.flips{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.flips.fl-1 {
+    justify-content: space-between;
+    align-items: center;
+}
+.flips.fl-2 {
+    align-items: center;
+}
+.flips.fl-3 {
+    align-items: center;
+}
+.flips.fl-4 {
+    align-items: center;
+}
 .nav {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: var(--gc);
-    gap:10px;
+    gap: 1rem;
     width: 100%;
-    padding: 4px;
+    height: 7vh;
+    padding: 5px;
     user-select: none;
 }
 .avat-circle {
     height: 100%;
     border-radius: 50%;
+    user-select: none;
+    pointer-events: none;
 }
 .avat-square {
     height: 100%;
     border-radius: var(--usual);
+    user-select: none;
+    pointer-events: none;
 }
 .tokim {
     height: 1.4rem;
@@ -95,6 +123,7 @@ body {
     border-style: solid;
 } */
 .nav2-but {
+    cursor: pointer;
     height: 100%;
     width: 22%;
     max-width: 104px;
@@ -102,14 +131,23 @@ body {
     padding: 0px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     position: relative;
     overflow: hidden;
     background-color: transparent;
-    font-family: 'Nunito';
-    font-size: 15px;
     color: var(--wc);
     text-decoration: none;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    user-select: none;
+}
+.rotator {
+    transform: rotate(30deg);
+}
+.nav2-but img {
+    height: 70%;
+    pointer-events: none;
 }
 /* .nav2-img {
 display: inline;
@@ -146,10 +184,13 @@ width: auto;
     cursor: pointer;
     font-family: "Nunito";
     font-weight: bolder;
+    font-size: 1rem;
     transition: background-color 0.2s ease;
+    -webkit-user-select: none;
 }
-.chp:active {
+.backger {
     background-color: var(--ac);
+    pointer-events: none;
 }
 .kebfr {
     display: grid;
@@ -173,6 +214,7 @@ width: auto;
     cursor: pointer;
     font-weight: bold;
     font-family: "Nunito";
+    font-size: 1rem;
     transition: background-color 0.3s ease;
     word-wrap: break-word;
     overflow: hidden;
@@ -180,6 +222,9 @@ width: auto;
 }
 .keb:hover {
     background-color: var(--gtca);
+}
+.keb-active {
+    background-color: var(--wca);
 }
 blurer {
     backdrop-filter: blur(1px);
@@ -208,6 +253,8 @@ blurer {
     image-rendering: pixelated;
     overflow: hidden;
     position: relative;
+    user-select: none;
+    pointer-events: none;
 }
 @keyframes fadeIn {
     0% {
@@ -224,9 +271,8 @@ blurer {
     max-width: 555px;
     overflow-y: auto;
 }
-.invis {
-    position: absolute;
-    z-index: -99999;
+.bf {
+    align-items: center;
 }
 .inv {
     margin-top: 4vh;
@@ -235,16 +281,20 @@ blurer {
     color: var(--bc);
     background-color: var(--ac);
     font-size: 18px;
+    user-select: none;
+    -webkit-user-select: none;
 }
 .inv:active {
     background-color: transparent;
     color: var(--ac);
+    user-select: none;
 }
 .frn {
     font-size: 16px;
     height: 7vh;
     flex-shrink: 0;
     flex-grow: 0;
+    gap: 1rem;
 }
 .tsk {
     font-size: 16px;
@@ -275,6 +325,7 @@ blurer {
     grid-template-columns: auto auto;
     justify-content: space-between;
     line-height: 1;
+    margin-bottom: 0.2rem;
 }
 .chunk {
     display: flex;
@@ -292,6 +343,11 @@ blurer {
     border-radius: var(--usual);
     background-color: var(--gc);
 }
+.bottom-nav {
+    z-index: 99999999;
+    position: absolute;
+    bottom: 0px;
+}
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -302,4 +358,8 @@ blurer {
 ::-webkit-scrollbar-thumb {
   background-color: var(--gtca);
   border-radius: 100px;
+}
+.invis {
+    position: absolute;
+    z-index: -99999;
 }
