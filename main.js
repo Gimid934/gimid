@@ -6,7 +6,7 @@ toky = document.querySelector('.toky');
 navbs = document.querySelectorAll('.nav2-but');
 flips = document.querySelectorAll('.flips');
 createButtons();
-
+pan.textContent = window.screen.width + "x" + window.screen.height
 function randint(max) {
     return Math.floor(Math.random() * max);
 }
@@ -98,16 +98,19 @@ navbs.forEach(button => {
     if (! (present_flip.classList[1] == button.classList[1])) {
       present_flip.classList.remove('acti')
       present_flip.classList.add('invis')
+      present_button = document.querySelector('.nav2-but.'+present_flip.classList[1])
+      present_button.children[1].classList.add('invis')
       
       new_flip = document.querySelector('.flips.' + button.classList[1])
       new_flip.classList.remove('invis')
       new_flip.classList.add('acti')
+      button.children[1].classList.remove('invis');
     }
-    console.log(button.classList[1])
-    button.children[0].classList.add('rotator');
-    setTimeout(() => {
-      button.children[0].classList.remove('rotator')
-    }, 500)
+    
+    //button.children[0].classList.add('rotator');
+    //setTimeout(() => {
+    //  button.children[0].classList.remove('rotator')
+    //}, 500)
   })
 })
 // temporary
