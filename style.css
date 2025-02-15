@@ -138,16 +138,15 @@ body {
     background-color: transparent;
     color: var(--wc);
     text-decoration: none;
-    transition: transform 0.3s ease;
     transform-origin: center;
     user-select: none;
 }
 .rotator {
-    transform: rotate(30deg);
+    transform: rotate(20deg);
 }
 .nav2-but img {
-    height: 70%;
     pointer-events: none;
+    transition: transform 0.3s ease;
 }
 /* .nav2-img {
 display: inline;
@@ -181,6 +180,7 @@ width: auto;
     color: var(--ac);
     background-color: transparent;
     user-select: none;
+    overflow: hidden;
     cursor: pointer;
     font-family: "Nunito";
     font-weight: bolder;
@@ -198,9 +198,10 @@ width: auto;
     grid-template-rows: repeat(5, 1fr);
     gap: min(1vw, 1vh);
     width: min(95vw, 60vh);
-}
+}/*check blurer size / overflowing > try z index of text in kebs + everything in kebs or rewrite circles...*/  
 .keb {
     display: flex;
+    height: 100%;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
@@ -210,7 +211,7 @@ width: auto;
 	background-color: var(--gtc);
     color: var(--wc);
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     cursor: pointer;
     font-weight: bold;
     font-family: "Nunito";
@@ -234,6 +235,7 @@ blurer {
     position: absolute;
     user-select: none;
     pointer-events: none;
+    overflow: hidden;
 }
 .paint {
     transform: translateZ(0);
@@ -360,6 +362,7 @@ blurer {
   border-radius: 100px;
 }
 .invis {
+    display: none;
     position: absolute;
     z-index: -99999;
 }
