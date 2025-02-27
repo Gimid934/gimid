@@ -226,7 +226,8 @@ width: auto;
     background-color: var(--wca);
 }
 blurer {
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(round(nearest, calc(0.03 * (min(95vw, 60vh))), 1px));
+    backdrop-filter: blur(round(nearest, calc(0.03 * (min(95vw, 60vh))), 1px));
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -234,6 +235,10 @@ blurer {
     user-select: none;
     pointer-events: none;
     overflow: hidden;
+}
+.nav blurer {
+    -webkit-backdrop-filter: blur(round(nearest, calc(0.012 * (min(95vw, 60vh))), 1px));
+    backdrop-filter: blur(round(nearest, calc(0.012 * (min(95vw, 60vh))), 1px));
 }
 .paint, .nav-paint {
     transform: translateZ(0);
@@ -247,7 +252,7 @@ blurer {
     background-image: radial-gradient(var(--ac), var(--gc));
     height: 150%;
     aspect-ratio: 1;
-    top: 50%;
+    top: 40%;
 }
 .signa {
     display: flex;

@@ -6,16 +6,20 @@ toky = document.querySelector('.toky');
 navbs = document.querySelectorAll('.nav2-but');
 flips = document.querySelectorAll('.flips');
 createButtons();
-pan.textContent = window.screen.width + "x" + window.screen.height
 function randint(max) {
     return Math.floor(Math.random() * max);
 }
 nocl = []
+paint_colors = []
+for (i = 0; i < 14; i++) {
+  paint_colors.push(hsl2hex(randint(360), 100, 45+randint(10)))
+}
+
 function createCircle(event) {
     if (! nocl.includes(event["srcElement"]) && Array.from(buttons).includes(event["srcElement"])) {
       pan.innerHTML += event["srcElement"].innerHTML.match(/\w+/) + " "
   }
-    col = `hsl(${randint(360)} ${100} ${45+randint(10)})`
+    col = paint_colors[Array.prototype.indexOf.call(buttons, event["srcElement"])]
     stand_w = event["srcElement"].getBoundingClientRect()["width"]/2 - 10
     w = stand_w + randint(stand_w/4) + stand_w/4
     ml = event['x'] - event["srcElement"].getBoundingClientRect()["left"] - w/2
@@ -68,10 +72,21 @@ async function createButtons() {
       button.addEventListener('click', createCircle);
       grid.appendChild(button);
       b = document.createElement('blurer')
-      b.style.cssText = `backdrop-filter: blur(${Math.round(0.146*button.getBoundingClientRect()['width'])}px);`
+      //b.style.cssText = `backdrop-filter: blur(${Math.round(0.146*button.getBoundingClientRect()['width'])}px);`
       button.appendChild(b)
     }
     buttons = document.querySelectorAll('.keb')
+}
+
+function hsl2hex(h, s, l) {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
 }
 
 function checkp() {
@@ -89,6 +104,10 @@ function checkp() {
     kebl.classList.remove('keb-active')
   });
   nocl = []
+  paint_colors = []
+  for (i = 0; i < 14; i++) {
+    paint_colors.push(hsl2hex(randint(360), 100, 45+randint(10)))
+  }
 }
 ch.addEventListener('click', checkp);
 
@@ -172,6 +191,9 @@ function showup(){
         leveler.innerText = l_t
     } else if (cou == 9) {
         leveler.innerText = "lvl ?"
+        if (pas.value == 'sizes') {
+          pan.textContent = window.screen.width + "x" + window.screen.height
+        }
     }
     
 }
